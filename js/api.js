@@ -3,7 +3,6 @@ var config;
 var editor_template;
 var editor_css;
 var json_viewer;
-var current_folder = "instagram";
 var height = 200;
 	
 CodeMirror.defineMode("htmlhandlebars", function(config) {
@@ -15,7 +14,7 @@ CodeMirror.defineMode("htmlhandlebars", function(config) {
 });
 
 function init() {
-	$.getJSON(current_folder + '/config.json', function(data) {
+	$.getJSON('config.json', function(data) {
 		config = data;
 		$('title').html(config.title);
 		$('.container-fluid').prepend($('<h1></h1>').append(config.icon).append(" " ).append(config.title));
@@ -54,7 +53,7 @@ function getTemplateAjax(path, callback) {
 }
 
 function showStylesheet() {
-	getTemplateAjax(current_folder + '/styles.css', function(styles) {
+	getTemplateAjax('styles.css', function(styles) {
 		if(!editor_css) {
 			$('#edit-style').val(styles);	
 			editor_css = CodeMirror.fromTextArea(document.getElementById("edit-style"), {
@@ -76,7 +75,7 @@ function showStylesheet() {
 
 function showEditableTemplate() {
 	var template_source = $('.tab-pane.active').attr('template');
-    getTemplateAjax(current_folder + '/templates/' + template_source, function(template) {
+    getTemplateAjax('templates/' + template_source, function(template) {
   		if(!editor_template) {
 			$('#edit-template').val(template);	
 	    	editor_template = CodeMirror.fromTextArea(document.getElementById("edit-template"), {
