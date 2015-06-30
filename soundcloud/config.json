@@ -1,0 +1,58 @@
+{
+	"id": "soundcloud",
+	"auth_url": "https://soundcloud.com/connect",
+	"redirect_url": "http://code510.org/vanwars/soundcloud/",
+	"client_id": "87cbda6ee084418612154fff3c0d5c11",
+	"include_client_id": true,
+	"include_access_token": true,
+	"access_token": "oauth_token",
+	"jsonp": false,
+	"icon": "<i class=\"fa fa-soundcloud\"></i>",
+	"title": "Soundcloud API Tester",
+	"tabs": [{
+			"name": "Stream Search",
+			"url": "https://api.soundcloud.com/tracks?limit=5&q=duranduran",
+			"template": "tracks.tpl",
+			"reference_url": "https://developers.soundcloud.com/docs/api/reference#tracks",
+			"help_text": "Go to the SoundCloud API reference for more information.",
+			"params": [{ 
+				"name": "q",
+				"type": "text",
+				"help_text": "query parameter for keyword filter"
+			}]
+		}, {
+			"name": "User Search",
+			"url": "https://api.soundcloud.com/users?limit=25",
+			"template": "users.tpl",
+			"reference_url": "https://developers.soundcloud.com/docs/api/reference#users",
+			"help_text": "Go to the SoundCloud API reference for more information.",
+			"params": [{ 
+				"name": "q",
+				"type": "text",
+				"help_text": "query parameter for keyword filter"
+			}]
+		}, {
+			"name": "Playlist",
+			"url": "https://api.soundcloud.com/playlists/405726.json?limit=25",
+			"template": "playlist.tpl",
+			"reference_url": "https://developers.soundcloud.com/docs/api/reference#playlists",
+			"help_text": "Go to the SoundCloud API reference for more information.",
+			"params": [{ 
+				"name": "q",
+				"type": "text",
+				"help_text": "query parameter for keyword filter"
+			}]
+		}, {
+			"name": "My Profile",
+			"url": "https://api.soundcloud.com/me?limit=25",
+			"template": "profile.tpl",
+			"reference_url": "https://developers.soundcloud.com/docs/api/reference#me",
+			"help_text": "Go to the SoundCloud API reference for more information.",
+			"params": [{ 
+				"name": "q",
+				"type": "text",
+				"help_text": "query parameter for keyword filter"
+			}]
+		}	
+	]
+}
