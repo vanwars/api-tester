@@ -14,10 +14,6 @@ h1 { margin-bottom: 20px; }
 	border-right: solid 1px #ccc;
 	min-height: 800px;
 }
-pre {
-/*	background-color: #FFF !important;*/
-	border: none !important;
-}
 .container-fluid {
 	width: 90%;
 }

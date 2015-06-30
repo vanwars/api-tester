@@ -2,6 +2,7 @@ var currentData;
 var config;
 var editor_template;
 var editor_css;
+var json_viewer;
 CodeMirror.defineMode("htmlhandlebars", function(config) {
     return CodeMirror.multiplexingMode(CodeMirror.getMode(config, "text/html"), {
 	     open: "{{", close: "}}",
@@ -103,12 +104,20 @@ function genericCallback($el, data, f) {
 			$el.html(JSON.stringify(data));
 			break;
 		case '1':
-			$pre = $('<pre class="prettyprint"></pre>');
-			$el.append($pre);
-			$pre.html(JSON.stringify(data, null, 3));
-			prettyPrint();
- 			urlize($el);
- 			//photoify($el);
+			$textarea = $('<textarea></textarea>');
+			$textarea.val(JSON.stringify(data, null, 3));
+ 			$el.append($textarea);
+			json_viewer = CodeMirror.fromTextArea($textarea.get(0), {
+				mode: "application/ld+json",
+				styleActiveLine: true,
+				lineNumbers: true,
+				theme: "neat",
+				lineWrapping: true,
+				readOnly: true,
+				foldGutter: true,
+				viewportMargin: Infinity,
+				gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+	    	});
  			break;
 		case '2':
 			var template_id = $('.tab-pane.active').attr('template-id');
