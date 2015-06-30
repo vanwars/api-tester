@@ -8,7 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/navigation.css">
 	
 	<!-- codemirror styles -->
 	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
@@ -16,22 +15,7 @@
     <link rel="stylesheet" href="codemirror/theme/neat.css">
     <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css">
     
-    <script src="codemirror/lib/codemirror.js"></script>
-    <script src="codemirror/addon/mode/simple.js"></script>
-    <script src="codemirror/addon/mode/multiplex.js"></script>
-    <script src="codemirror/mode/javascript/javascript.js"></script>
-    <script src="codemirror/mode/css/css.js"></script>
-    <script src="codemirror/mode/xml/xml.js"></script>
-    <script src="codemirror/mode/handlebars/handlebars.js"></script>
-    <script src="codemirror/addon/selection/active-line.js"></script>
-    <script src="codemirror/addon/fold/foldcode.js"></script>
-    <script src="codemirror/addon/fold/foldgutter.js"></script>
-    <script src="codemirror/addon/fold/brace-fold.js"></script>
-	<style id="custom-styles">
-		.goober {
-			font-size: 300px;
-		}
-	</style>
+    <style id="custom-styles"></style>
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
 </head>
 <body>
@@ -91,7 +75,6 @@
 		</div><!-- end row-fluid -->
 	</main>
 	
-	
 	<div id="cd-shadow-layer" class=""></div>
 	<div id="cd-cart" class="">
 		<i class="fa fa-pencil fa-2x fa-white block"></i>
@@ -106,6 +89,21 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.2/handlebars.min.js"></script>
 <script src="js/handlebars-helpers.js"></script>
+
+<!-- codemirror scripts -->
+<script src="codemirror/lib/codemirror.js"></script>
+<script src="codemirror/addon/mode/simple.js"></script>
+<script src="codemirror/addon/mode/multiplex.js"></script>
+<script src="codemirror/mode/javascript/javascript.js"></script>
+<script src="codemirror/mode/css/css.js"></script>
+<script src="codemirror/mode/xml/xml.js"></script>
+<script src="codemirror/mode/handlebars/handlebars.js"></script>
+<script src="codemirror/addon/selection/active-line.js"></script>
+<script src="codemirror/addon/fold/foldcode.js"></script>
+<script src="codemirror/addon/fold/foldgutter.js"></script>
+<script src="codemirror/addon/fold/brace-fold.js"></script>
+
+<!-- api & ui code -->
 <script src="js/main.js"></script>
 <script src="js/api.js"></script>
 	
@@ -120,7 +118,7 @@
 	</ul>
 	<div class="tab-content">
 	{{#tabs}}
-	  	<form role="tabpanel" class="form-horizontal tab-pane fade in" id="{{ slugify name }}" template-id="{{ template_id }}">
+	  	<form role="tabpanel" class="form-horizontal tab-pane fade in" id="{{ slugify name }}" template="{{ template }}">
 		  	<div class="form-group">
 		    	<label for="tag-search" class="col-sm-2 control-label">{{ name }} URL</label>
 		    	<div class="col-sm-7">
@@ -142,44 +140,6 @@
 	{{/tabs}}
 	</div>
 </script>
-
-<script id="users-template" type="x-template">
-	{{#data}} 
-  	<div class="thumbnail profile-thumb">
-      	<img src="{{ profile_picture }}" />
-      	<div class="caption">
-      		<p>{{ id }}<br>
-      		{{ username }} {{ full_name }}</p>
-      	</div>
-  	</div>
-	{{/data}}
-</script>
-
-<script id="photos-template" type="x-template">
-{{#if pagination.next_url}}
-	<a class="btn btn-default next-page" href="#" target="{{pagination.next_url}}">More</a><br>
-{{/if}}
-
-{{#data}}
-<div class="thumbnail instagram-thumb">
-    <img src="{{images.thumbnail.url}}" />
-    <div class="caption">
-    {{#first_n tags 2}}
-          <span class="tag">{{ this }}</span>
-    {{/first_n}}
-    <p>{{caption.text}}</p>
-    </div>
-</div>
-{{/data}}
-</script>
-
-<script id="tags-template" type="x-template">
-	{{#data}}
-		<span class="tag">{{ name }}</span>
-		{{media_count}}<br />
-	{{/data}}
-</script>
-	
 	
 </body>
 </html>

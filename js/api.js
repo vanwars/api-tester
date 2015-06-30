@@ -3,6 +3,9 @@ var config;
 var editor_template;
 var editor_css;
 var json_viewer;
+var current_folder = "instagram";
+var height = 200;
+	
 CodeMirror.defineMode("htmlhandlebars", function(config) {
     return CodeMirror.multiplexingMode(CodeMirror.getMode(config, "text/html"), {
 	     open: "{{", close: "}}",
@@ -10,8 +13,9 @@ CodeMirror.defineMode("htmlhandlebars", function(config) {
 	     parseDelimiters: true
     });
 });
+
 function init() {
-	$.getJSON('config.json', function(data) {
+	$.getJSON(current_folder + '/config.json', function(data) {
 		config = data;
 		$('title').html(config.title);
 		$('.container-fluid').prepend($('<h1></h1>').append(config.icon).append(" " ).append(config.title));
@@ -32,45 +36,62 @@ function attachEventHandlers() {
 
 	$('label').click(checker);
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  		showStylesheet();
   		showEditableTemplate();
   		reload();
 	});
 }
 
+function getTemplateAjax(path, callback) {
+    $.ajax({
+      url: path,
+        success: function(data) {
+          	if (callback) {
+          		callback(data);
+          	}
+        }
+    });
+}
+
+function showStylesheet() {
+	getTemplateAjax(current_folder + '/styles.css', function(styles) {
+		if(!editor_css) {
+			$('#edit-style').val(styles);	
+			editor_css = CodeMirror.fromTextArea(document.getElementById("edit-style"), {
+				mode: "text/css",
+				styleActiveLine: true,
+				lineNumbers: true,
+				theme: "api-tester",
+				lineWrapping: true,
+				foldGutter: true,
+				height: height,
+				gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+	    	});
+	    	//editor_css.setSize('auto', height);
+		} else {
+			editor_css.setValue($('#custom-styles').html());
+		}
+	});
+}
+
 function showEditableTemplate() {
-	var template_id = $('.tab-pane.active').attr('template-id');
-	var height = 200;
-	if(!editor_css) {
-		$('#edit-style').val($('#custom-styles').html());	
-		editor_css = CodeMirror.fromTextArea(document.getElementById("edit-style"), {
-			mode: "text/css",
-			styleActiveLine: true,
-			lineNumbers: true,
-			theme: "api-tester",
-			lineWrapping: true,
-			foldGutter: true,
-			height: 100,
-			gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-    	});
-    	editor_css.setSize('auto', height);
-	} else {
-		editor_css.setValue($('#custom-styles').html());
-	}
-    
-    if(!editor_template) {
-		$('#edit-template').val($('#' + template_id).html());	
-    	editor_template = CodeMirror.fromTextArea(document.getElementById("edit-template"), {
-			mode: "htmlhandlebars",
-			styleActiveLine: true,
-			lineNumbers: true,
-			theme: "api-tester",
-			height: "100px",
-			lineWrapping: true
-    	});
-    	editor_template.setSize('auto', height);
-    } else {
-    	editor_template.setValue($('#' + template_id).html());
-    }
+	var template_source = $('.tab-pane.active').attr('template');
+    getTemplateAjax(current_folder + '/templates/' + template_source, function(template) {
+  		if(!editor_template) {
+			$('#edit-template').val(template);	
+	    	editor_template = CodeMirror.fromTextArea(document.getElementById("edit-template"), {
+				mode: "htmlhandlebars",
+				styleActiveLine: true,
+				lineNumbers: true,
+				theme: "api-tester",
+				height: "100px",
+				lineWrapping: true
+	    	});
+	    	editor_template.setSize('auto', height);
+	    } else {
+	    	editor_template.setValue(template);
+	    }
+  	});
 }
 
 function query(e) {
@@ -96,44 +117,46 @@ function query(e) {
 }
 
 function genericCallback($el, data, f) {
-	var $pre;
 	currentData = data;
 	$el.empty();
 	switch($('input[name=status]:checked').val()) {
 		case '1':
-			$textarea = $('<textarea></textarea>');
-			$textarea.val(JSON.stringify(data, null, 3));
- 			$el.append($textarea);
-			json_viewer = CodeMirror.fromTextArea($textarea.get(0), {
-				mode: "application/ld+json",
-				styleActiveLine: true,
-				lineNumbers: true,
-				theme: "neat",
-				lineWrapping: true,
-				readOnly: true,
-				foldGutter: true,
-				viewportMargin: Infinity,
-				gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-	    	});
+			displayJSON($el, data);
  			break;
 		case '2':
-			var $tab = $('.tab-pane.active'); 
-			var template_id = $tab.attr('template-id');
-			if (template_id) {
-				var $row = $("<div />").addClass("row");
-				var template = Handlebars.compile(editor_template.getValue());
-				$('#custom-styles').html(editor_css.getValue());
-				$row.append(template(data));
-				$el.append($row);
-			} else {
-				$el.html(JSON.stringify(data, null, 3));
-			}
-			$tab.find(".next-page").click(function(e) {
-				e.preventDefault();
-			    $tab.find('input').val($(this).attr("target"));
-			  	$tab.find('button').trigger('click');
-			});
+			displayFormatted($el, data);
  			break;
+	}
+}
+
+function displayJSON($el, data) {
+	var $textarea = $('<textarea></textarea>');
+	$textarea.val(JSON.stringify(data, null, 3));
+ 	$el.append($textarea);
+	json_viewer = CodeMirror.fromTextArea($textarea.get(0), {
+		mode: "application/ld+json",
+		styleActiveLine: true,
+		lineNumbers: true,
+		theme: "neat",
+		lineWrapping: true,
+		readOnly: true,
+		foldGutter: true,
+		viewportMargin: Infinity,
+		gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+	});
+}
+
+function displayFormatted($el, data) {
+	var $tab = $('.tab-pane.active'); 
+	var template = $tab.attr('template');
+	if (template) {
+		var $row = $("<div />").addClass("row");
+		var template = Handlebars.compile(editor_template.getValue());
+		$('#custom-styles').html(editor_css.getValue());
+		$row.append(template(data));
+		$el.append($row);
+	} else {
+		displayJSON($el, data);
 	}
 }
 
@@ -155,6 +178,7 @@ function getAccessKey() {
 	var access_token = localStorage.getItem(config.id + '_access_token');
 	if (access_token) {
 		showApiTester(access_token);
+		showStylesheet();
 		showEditableTemplate();
 		query();
 	} else {
