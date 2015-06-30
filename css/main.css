@@ -1,0 +1,81 @@
+/*body {
+	background: url("http://www.designbolts.com/wp-content/uploads/2012/12/Tiny-Grid-Seamless-Patterns-For-Website-Backgrounds.jpg") repeat;
+}*/
+
+h1 { margin-bottom: 20px; }
+.tab-content { padding-top: 15px;}
+#token-form, #api-tester { display: none; }
+.col-sm-2, .col-sm-7 { 	padding: 5px; }
+.btn-default { background-color: #EEE; }
+.btn-default.active { background-color: #5cb85c; color: #FFF; }
+.tab-content {
+	background-color: #FFF;
+	border-left: solid 1px #ccc;
+	border-right: solid 1px #ccc;
+	min-height: 800px;
+}
+pre {
+	background-color: #FFF !important;
+	border: none !important;
+}
+.thumbnail {
+  	display: inline-block;
+}
+.instagram-thumb {
+	height: 300px;
+  	overflow-y: hidden;
+  	width: 160px;
+}
+.profile-thumb {
+	height: 220px;
+  	overflow-y: hidden;
+  	width: 110px;
+  	margin-left: 10px;
+}
+.track-thumb {
+	background: url("http://www.designbolts.com/wp-content/uploads/2012/12/Tiny-Grid-Seamless-Patterns-For-Website-Backgrounds.jpg") repeat;
+	margin-left: 20px;
+	max-width: 320px;
+	height: 210px;
+	overflow: hidden;
+}
+
+.tab-content {
+	padding: 30px;
+}
+
+.tag {
+  background: #FE5F55;
+  border-radius: 3px 0 0 3px;
+  color: #FFF;
+  font-size: 12px;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 15px 0 10px;
+  position: relative;
+  margin: 0 5px 5px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag::after {
+  background: #fff;
+  border-bottom: 10px solid transparent;
+  border-left: 8px solid #FE5F55;
+  border-top: 10px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.tag:hover::after {
+   border-left-color: crimson; 
+}
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html  lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/prettify.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/navigation.css">
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+</head>
+<body>
+	<header>
+		<div id="logo"><img src="img/cd-logo.svg" alt="Homepage"></div>
+
+		<div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
+		<div id="cd-cart-trigger"><i class="fa fa-pencil fa-2x fa-white"></i></div>
+	</header>
+
+	<nav id="main-nav">
+		<ul>
+			<li><a href="#0">Local Ground</a></li>
+			<li><a href="#0">SoundCloud</a></li>
+			<li><a class="current" href="#0">Instagram</a></li>
+		</ul>
+	</nav>
+
+	
+
+	<main class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-12">
+				<form id="token-form" class="form-inline" action="" method="GET">
+				  	<div class="form-group">
+				    	<label for="client_id">client_id</label>
+				    	<input type="text" class="form-control" id="client_id" name="client_id" placeholder="Client ID">
+				    	<input type="hidden" name="response_type" value="token">
+				    	<input type="hidden" id="redirect_uri" name="redirect_uri" value="">
+				  	</div>
+				  	<button type="submit" class="btn btn-default">Get Access Token</button>
+				</form>
+				<div id="api-tester">
+					<form class="form-horizontal">
+				  		<div class="form-group">
+				    		<label for="access_token" class="col-sm-2 control-label">access_token</label>
+				    		<div class="col-sm-7 input-group">
+				      			<input type="text" class="form-control" id="access_token">
+				      			<span class="input-group-btn" data-toggle="buttons" data-toggle-default-class="btn-default">
+						            <label class="btn btn-default">
+	  									<input type="radio" name="status" value="0" /> Raw
+	 								</label>
+	 								<label class="btn btn-default">
+		  								<input type="radio" name="status" value="1" /> Formatted
+		 							</label>
+	 								<label class="btn btn-default active">
+		  								<input type="radio" name="status" value="2" checked /> Familiar
+		 							</label>
+						       	</span>
+				      		</div>
+				    	</div>
+				    </form>
+			    	
+			    	<!-- Main Content -->
+				    <div id="main" class="row"></div>
+				    
+				    
+		    	</div><!-- end api-tester -->
+		  	</div><!-- end first cell in row -->
+		</div><!-- end row-fluid -->
+	</main>
+	
+	
+	<div id="cd-shadow-layer" class=""></div>
+	<div id="cd-cart" class="">
+		<i class="fa fa-pencil fa-2x fa-white block"></i>
+		<h2>Display Code</h2>
+		<textarea id="edit-template"></textarea>
+		<a href="#0" class="update-template">Update Template</a>
+		<p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+	</div> <!-- cd-cart -->
+	
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.2/handlebars.min.js"></script>
+<script src="js/handlebars-helpers.js"></script>
+<script src="js/prettify-min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+	
+	
+<script id="tabs-template" type="x-template">
+	<ul class="nav nav-tabs" role="tablist">
+	{{#tabs}}
+	  	<li role="presentation">
+	  		<a href="#{{ slugify name }}" role="tab" data-toggle="tab">{{ name }}</a>
+	  	</li>
+	{{/tabs}}
+	</ul>
+	<div class="tab-content">
+	{{#tabs}}
+	  	<form role="tabpanel" class="form-horizontal tab-pane fade in" id="{{ slugify name }}" template-id="{{ template_id }}">
+		  	<div class="form-group">
+		    	<label for="tag-search" class="col-sm-2 control-label">{{ name }} URL</label>
+		    	<div class="col-sm-7">
+		    		<input type="text" class="form-control" value="{{ url }}">
+		  		</div>
+		  		<div class="col-sm-2">
+		  			<button class="btn btn-primary">Search</button>
+		  		</div>
+		  		<div class="col-sm-9">
+		  			<p> 
+		  				{{ help_text }} <a href="{{ reference_url }}" target="_blank">more info...</a>
+		  			</p>
+		  		</div>
+		  	</div>
+		  	<div class="row">
+		  		<div class="col-sm-12 display-results"></div>
+		  	</div>
+		</form>
+	{{/tabs}}
+	</div>
+</script>
+
+<script id="users-template" type="x-template">
+	{{#data}} 
+	<div class="col-sm-4 col-md-2">
+	  	<div class="thumbnail profile-thumb">
+	      	<img src="{{ profile_picture }}" />
+	      	<div class="caption">
+	      		<p>{{ id }}<br>
+	      		{{ username }} {{ full_name }}</p>
+	      	</div>
+	  	</div>
+	</div>
+	{{/data}}
+</script>
+
+<script id="photos-template" type="x-template">
+	{{#data}}
+	<div class="col-sm-4 col-md-2">
+		<div class="thumbnail instagram-thumb">
+			<img src="{{images.thumbnail.url}}" />
+			<div class="caption">
+			  {{#first_n tags 2}}
+					<span class="tag">{{ this }}</span>
+			  {{/first_n}}
+			  <p>{{caption.text}}</p>
+			</div>
+		</div>
+	</div>
+	{{/data}}
+</script>
+
+<script id="tags-template" type="x-template">
+	{{#data}}
+		<span class="tag">{{ name }}</span>
+		{{media_count}}<br />
+	{{/data}}
+</script>
+	
+	
+</body>
+</html>
+
+
