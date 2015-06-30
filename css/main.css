@@ -15,8 +15,11 @@ h1 { margin-bottom: 20px; }
 	min-height: 800px;
 }
 pre {
-	background-color: #FFF !important;
+/*	background-color: #FFF !important;*/
 	border: none !important;
+}
+.container-fluid {
+	width: 90%;
 }
 .thumbnail {
   	display: inline-block;

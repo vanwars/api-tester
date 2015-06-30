@@ -62,22 +62,23 @@ function toggle_panel_visibility ($lateral_panel, $background_layer, $body) {
 		// firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
 		$lateral_panel.removeClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 			//$body.removeClass('overflow-hidden');
-			$('.container-fluid').css({
-				'width': '90%',
-				'margin-left': 'auto',
-				'margin-right': 'auto'
-			})
+			
+		});
+		$('.container-fluid').css({
+			'width': '90%',
+			'margin-left': 'auto',
+			'margin-right': 'auto'
 		});
 		//$background_layer.removeClass('is-visible');
 
 	} else {
 		$lateral_panel.addClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 			//$body.addClass('overflow-hidden');
-			$('.container-fluid').css({
-				'width': '70%',
-				'margin-left': 'inherit',
-				'margin-right': 'inherit'
-			})
+		});
+		$('.container-fluid').css({
+			'width': '70%',
+			'margin-left': 'inherit',
+			'margin-right': 'inherit'
 		});
 		//$background_layer.addClass('is-visible');
 	}

@@ -15,7 +15,7 @@ html * {
 }
 
 body {
-  background-color: #eeeff7;
+  background: url("http://www.designbolts.com/wp-content/uploads/2012/12/Tiny-Grid-Seamless-Patterns-For-Website-Backgrounds.jpg") repeat;
 }
 body.overflow-hidden {
   /* prevent 2 vertical scrollbars on ie and firefox when the cart is visible */
@@ -291,7 +291,6 @@ header {
 main {
   position: relative;
   min-height: 100%;
-  background: url("http://www.designbolts.com/wp-content/uploads/2012/12/Tiny-Grid-Seamless-Patterns-For-Website-Backgrounds.jpg") repeat;
   padding-top: 70px;
   z-index: 1;
 }
@@ -358,9 +357,9 @@ sarah
 
 --------------------------------*/
 
-textarea {
+#edit-template, #edit-style {
     width: 100%;
-    height: 300px;
+    height: 200px;
 }
 .fa-white {
 	color: #000;
