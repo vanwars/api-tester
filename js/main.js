@@ -76,7 +76,7 @@ function toggle_panel_visibility ($lateral_panel, $background_layer, $body) {
 			//$body.addClass('overflow-hidden');
 		});
 		$('.container-fluid').css({
-			'width': '70%',
+			'width': '60%',
 			'margin-left': 'inherit',
 			'margin-right': 'inherit'
 		});

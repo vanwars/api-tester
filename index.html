@@ -7,15 +7,15 @@
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/prettify.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/navigation.css">
 	
-	<!-- codemirror scripts and styles -->
+	<!-- codemirror styles -->
 	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="codemirror/theme/api-tester.css">
     <link rel="stylesheet" href="codemirror/theme/neat.css">
     <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css">
+    
     <script src="codemirror/lib/codemirror.js"></script>
     <script src="codemirror/addon/mode/simple.js"></script>
     <script src="codemirror/addon/mode/multiplex.js"></script>
@@ -106,7 +106,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.2/handlebars.min.js"></script>
 <script src="js/handlebars-helpers.js"></script>
-<script src="js/prettify-min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/api.js"></script>
 	
@@ -157,17 +156,22 @@
 </script>
 
 <script id="photos-template" type="x-template">
-	{{#data}}
-	<div class="thumbnail instagram-thumb">
-		<img src="{{images.thumbnail.url}}" />
-		<div class="caption">
-		  {{#first_n tags 2}}
-				<span class="tag">{{ this }}</span>
-		  {{/first_n}}
-		  <p>{{caption.text}}</p>
-		</div>
-	</div>
-	{{/data}}
+
+{{#if pagination.next_url}}
+	<a class="btn btn-default next-page" href="#" target="{{pagination.next_url}}">More</a><br>
+{{/if}}
+
+{{#data}}
+<div class="thumbnail instagram-thumb">
+    <img src="{{images.thumbnail.url}}" />
+    <div class="caption">
+    {{#first_n tags 2}}
+          <span class="tag">{{ this }}</span>
+    {{/first_n}}
+    <p>{{caption.text}}</p>
+    </div>
+</div>
+{{/data}}
 </script>
 
 <script id="tags-template" type="x-template">

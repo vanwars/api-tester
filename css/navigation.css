@@ -167,7 +167,7 @@ header {
 }
 @media only screen and (min-width: 1200px) {
   #main-nav, #cd-cart {
-    width: 30%;
+    width: 40%;
     /* header height has changed */
     padding-top: 60px;
   }

@@ -100,9 +100,6 @@ function genericCallback($el, data, f) {
 	currentData = data;
 	$el.empty();
 	switch($('input[name=status]:checked').val()) {
-		case '0':
-			$el.html(JSON.stringify(data));
-			break;
 		case '1':
 			$textarea = $('<textarea></textarea>');
 			$textarea.val(JSON.stringify(data, null, 3));
@@ -120,7 +117,8 @@ function genericCallback($el, data, f) {
 	    	});
  			break;
 		case '2':
-			var template_id = $('.tab-pane.active').attr('template-id');
+			var $tab = $('.tab-pane.active'); 
+			var template_id = $tab.attr('template-id');
 			if (template_id) {
 				var $row = $("<div />").addClass("row");
 				var template = Handlebars.compile(editor_template.getValue());
@@ -129,9 +127,12 @@ function genericCallback($el, data, f) {
 				$el.append($row);
 			} else {
 				$el.html(JSON.stringify(data, null, 3));
-				prettyPrint();
-	 			photoify($el);
 			}
+			$tab.find(".next-page").click(function(e) {
+				e.preventDefault();
+			    $tab.find('input').val($(this).attr("target"));
+			  	$tab.find('button').trigger('click');
+			});
  			break;
 	}
 }
@@ -187,45 +188,5 @@ function reload() {
 	$('.tab-pane.active').find('.display-results').empty();
 	$('.tab-pane.active').find('button').trigger('click');
 }
-
-function urlize($el){
-	var strings = $el.find('.str'),
-		txt = "",
-		href = "",
-		$a = "";
-	$.each(strings, function() {
-		txt = $(this).html();
-		if(txt.indexOf("https://") != -1 || txt.indexOf("http://") != -1) {
-			href = txt.replace(/\"/g, "");
-			$a = $("<a />").html(href).attr("href", href + "?client_id=" + config.client_id).attr("target", "_blank");
-			$(this).empty();
-			$(this).append("\"").append($a).append("\"");
-		}
-	})
-}
-
-function photoify($el){
-	var strings = $el.find('.str'),
-		txt = "",
-		href = "",
-		src = "",
-		$a = "",
-		$img;
-	$.each(strings, function() {
-		txt = $(this).html();
-		if(txt.indexOf("://") != -1) {
-			if(txt.indexOf(".jpg") != -1) {
-				src = txt.replace(/\"/g, "");
-				$img = $("<img />").attr("src", src).addClass("thumbnail");
-				$(this).html($img);
-			} else {
-				href = txt.replace(/\"/g, "");
-				$a = $("<a />").html(href).attr("href", href + "?client_id=" + config.client_id).attr("target", "_blank");
-				$(this).empty();
-				$(this).append("\"").append($a).append("\"");	
-			}
-		}
-	})
-};
 
 init();
