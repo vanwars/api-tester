@@ -32,6 +32,18 @@ function attachEventHandlers() {
 	$('.update-template').click(function(e) {
 		query(e);
 	});
+	
+	$('.fullscreen').click(function(e) {
+		var $tab = $('.tab-pane.active');
+		if($tab.find('.CodeMirror').get(0)) {
+			toggleFullscreen($tab.find('.CodeMirror').get(0));
+		} else {
+			toggleFullscreen($tab.find('.display-results').get(0));	
+		}
+		e.preventDefault();
+	});
+	
+	
 
 	$('label').click(checker);
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -121,7 +133,7 @@ function genericCallback($el, data, f) {
 	switch($('input[name=status]:checked').val()) {
 		case '1':
 			displayJSON($el, data);
- 			break;
+			break;
 		case '2':
 			displayFormatted($el, data);
  			break;
@@ -209,7 +221,33 @@ function checker() {
 
 function reload() {
 	$('.tab-pane.active').find('.display-results').empty();
-	$('.tab-pane.active').find('button').trigger('click');
+	$('.tab-pane.active').find('.btn-primary').trigger('click');
 }
 
 init();
+
+function toggleFullscreen(elem) {
+    elem = elem || document.documentElement;
+    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+        !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
+}

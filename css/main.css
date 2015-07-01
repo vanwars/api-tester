@@ -361,3 +361,31 @@ h1 { margin-bottom: 20px; }
 .tab-content {
 	padding: 30px;
 }
+
+*:-webkit-full-screen {
+  position:fixed;
+  top:0; 
+  right:0; 
+  bottom:0; 
+  left:0;
+  margin:0;
+  box-sizing:border-box;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain;
+}
+
+.CodeMirror:-webkit-full-screen {
+	width:100%;
+  	height:100%;
+}
+
+.display-results:-webkit-full-screen {
+	padding: 20px 50px;
+}
+
+.fa-expand {
+  margin-top: -20px;
+  margin-right: -20px;
+  color: #999;
+}

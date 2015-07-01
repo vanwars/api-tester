@@ -29,8 +29,8 @@
 	<nav id="main-nav">
 		<ul>
 			<li><a href="#0">Local Ground</a></li>
-			<li><a href="." class="current">SoundCloud</a></li>
-			<li><a href="../instagram">Instagram</a></li>
+			<li><a href="../soundcloud">SoundCloud</a></li>
+			<li><a class="current" href=".">Instagram</a></li>
 		</ul>
 	</nav>
 
@@ -119,7 +119,8 @@
 	<div class="tab-content">
 	{{#tabs}}
 	  	<form role="tabpanel" class="form-horizontal tab-pane fade in" id="{{ slugify name }}" template="{{ template }}">
-		  	<div class="form-group">
+	  			<i class="fullscreen fa fa-expand pull-right fa-2x"></i>
+	  			<div class="form-group">
 		    	<label for="tag-search" class="col-sm-2 control-label">{{ name }} URL</label>
 		    	<div class="col-sm-7">
 		    		<input type="text" class="form-control" value="{{ url }}">
