@@ -1,6 +1,12 @@
-.profile-thumb {
-	height: 220px;
+.thumbnail {
+	height: 180px;
   	overflow-y: hidden;
-  	width: 110px;
   	margin-left: 10px;
+}
+
+.next-page {
+   	width: 30%;
+  	margin-right: auto;
+  	margin-left: auto;
+  	display: block;
 }

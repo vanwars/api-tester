@@ -3,7 +3,7 @@
 {{/if}}
 
 {{#results}}
-<div class="thumbnail instagram-thumb">
+<div class="thumbnail">
     <img src="{{path_small}}" />
     <div class="caption">
     	<p>{{name}}</p>
