@@ -1,10 +1,11 @@
 {
 	"id": "soundcloud",
 	"auth_url": "https://soundcloud.com/connect",
-	"redirect_url": "http://code510.org/vanwars/soundcloud/",
+	"redirect_url": "http://code510.org/summer2015/api-tester/soundcloud/",
 	"client_id": "87cbda6ee084418612154fff3c0d5c11",
 	"include_client_id": true,
 	"include_access_token": true,
+	"authentication_required": true,
 	"access_token": "oauth_token",
 	"jsonp": false,
 	"icon": "<i class=\"fa fa-soundcloud\"></i>",

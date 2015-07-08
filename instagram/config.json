@@ -1,10 +1,11 @@
 {
 	"id": "instagram",
 	"auth_url": "https://instagram.com/oauth/authorize/",
-	"redirect_url": "http://code510.org/vanwars/instagram/",
+	"redirect_url": "http://code510.org/summer2015/api-tester/instagram/",
 	"client_id": "564c1636499f464aa1f658fa73df8477",
 	"include_client_id": false,
 	"include_access_token": true,
+	"authentication_required": true,
 	"access_token": "access_token",
 	"jsonp": true,
 	"icon": "<i class=\"fa fa-instagram\"></i>",

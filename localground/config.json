@@ -1,0 +1,26 @@
+{
+	"id": "localground",
+	"auth_url": null,
+	"redirect_url": null,
+	"client_id": "87cbda6ee084418612154fff3c0d5c11",
+	"include_client_id": false,
+	"include_access_token": false,
+	"authentication_required": false,
+	"jsonp": false,
+	"icon": "<i class=\"fa fa-soundcloud\"></i>",
+	"title": "Local Ground API Tester",
+	"tabs": [{
+			"name": "Snippet Searcher",
+			"url": "http://dev.localground.org/api/0/forms/10/data/",
+			"template": "snippets.tpl",
+			"reference_url": "http://dev.localground.org/api/0/forms/10/data/",
+			"help_text": "Go to the Local Ground API reference for more information."
+		}, {
+			"name": "Photos",
+			"url": "http://dev.localground.org/api/0/photos/",
+			"template": "photos.tpl",
+			"reference_url": "http://dev.localground.org/api/0/photos/",
+			"help_text": "Go to the Local Ground API reference for more information."
+		}
+	]
+}
