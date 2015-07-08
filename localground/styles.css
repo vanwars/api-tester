@@ -1,5 +1,5 @@
 .thumbnail {
-	height: 180px;
+	height: 200px;
   	overflow-y: hidden;
   	margin-left: 10px;
 }
@@ -9,4 +9,46 @@
   	margin-right: auto;
   	margin-left: auto;
   	display: block;
+}
+li { width: 300px; }
+.track { height: 100px; }
+.badge {
+	background-color: #ccc;
+	color: #000;
+	font-weight: normal;
+}
+
+.tag {
+  background: #FE5F55;
+  border-radius: 3px 0 0 3px;
+  color: #FFF;
+  font-size: 12px;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 15px 0 10px;
+  position: relative;
+  margin: 0 5px 5px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag::after {
+  background: #fff;
+  border-bottom: 10px solid transparent;
+  border-left: 8px solid #FE5F55;
+  border-top: 10px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.tag:hover::after {
+   border-left-color: crimson; 
 }

@@ -3,10 +3,13 @@
 {{/if}}
 
 {{#results}}
-<div class="thumbnail">
+<div class="thumbnail instagram-thumb">
     <img src="{{path_small}}" />
     <div class="caption">
-    	<p>{{name}}</p>
+    	<p>{{name}}<br>
+    		<span class="badge">{{show_lat_lng geometry}}</span>
+    		{{tagify tags}}
+    	</p>
     </div>
 </div>
 {{/results}}

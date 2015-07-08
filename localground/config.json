@@ -7,7 +7,6 @@
 	"include_access_token": false,
 	"authentication_required": false,
 	"jsonp": false,
-	"icon": "<i class=\"fa fa-soundcloud\"></i>",
 	"title": "Local Ground API Tester",
 	"tabs": [{
 			"name": "Snippet Searcher",
@@ -20,6 +19,12 @@
 			"url": "http://dev.localground.org/api/0/photos/",
 			"template": "photos.tpl",
 			"reference_url": "http://dev.localground.org/api/0/photos/",
+			"help_text": "Go to the Local Ground API reference for more information."
+		}, {
+			"name": "Audio",
+			"url": "http://dev.localground.org/api/0/audio/",
+			"template": "audio.tpl",
+			"reference_url": "http://dev.localground.org/api/0/audio/",
 			"help_text": "Go to the Local Ground API reference for more information."
 		}
 	]

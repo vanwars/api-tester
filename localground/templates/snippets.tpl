@@ -2,8 +2,11 @@
 <ul>
 {{#results}}
 	<li>
-		{{ description }}<br>
+		<strong>{{ description }}</strong>
+		<br>
 		<a href="{{example_url}}" target="_blank">View Example</a>
+		<br>
+		{{tagify tags}}
 	</li>
 {{/results}}
 </ul>
