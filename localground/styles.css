@@ -4,13 +4,12 @@
   	margin-left: 10px;
 }
 
-.next-page {
-   	width: 30%;
+.pager-container {
+   	width: 20%;
   	margin-right: auto;
   	margin-left: auto;
-  	display: block;
 }
-li { width: 300px; }
+.snippets > li { width: 300px; }
 .track { height: 100px; }
 .badge {
 	background-color: #ccc;
@@ -51,4 +50,8 @@ li { width: 300px; }
 
 .tag:hover::after {
    border-left-color: crimson; 
+}
+
+.narrow {
+	width: 100px;
 }

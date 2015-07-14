@@ -10,7 +10,7 @@
 	"title": "Local Ground API Tester",
 	"tabs": [{
 			"name": "Snippet Searcher",
-			"url": "http://dev.localground.org/api/0/forms/10/data/",
+			"url": "http://dev.localground.org/api/0/forms/10/data/?page_size=100",
 			"template": "snippets.tpl",
 			"reference_url": "http://dev.localground.org/api/0/forms/10/data/",
 			"help_text": "Go to the Local Ground API reference for more information."

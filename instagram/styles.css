@@ -51,3 +51,30 @@
 .tag:hover::after {
    border-left-color: crimson; 
 }
+
+.article-img img {
+    width: 100%;
+}
+.article-img {
+    display: inline-block;
+    margin: -2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 150px;
+}
+.article-overlay {
+    background-color: #000;
+    cursor: pointer;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0px;
+    transition: 0.5s ease;
+    width: 100%;
+    -moz-transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+}
+.article-overlay:hover {
+    opacity: 0;
+}

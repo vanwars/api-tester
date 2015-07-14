@@ -13,25 +13,25 @@
 	"tabs": [{
 			"name": "Tag Search",
 			"url": "https://api.instagram.com/v1/tags/search?q=nature",
-			"template": "tags.tpl",
+			"templates": ["tags.tpl"],
 			"reference_url": "https://developers.soundcloud.com/docs/api/reference#tracks",
 			"help_text": "Go to the SoundCloud API reference for more information."
 		}, {
 			"name": "Media by Tag",
 			"url": "https://api.instagram.com/v1/tags/mtshasta/media/recent",
-			"template": "photos.tpl",
+			"templates": ["photo_hover.tpl"],
 			"reference_url": "https://developers.soundcloud.com/docs/api/reference#users",
 			"help_text": "Go to the SoundCloud API reference for more information."
 		}, {
 			"name": "User Search",
 			"url": "https://api.instagram.com/v1/users/search?q=lcmac9",
-			"template": "users.tpl",
+			"templates": ["users.tpl"],
 			"reference_url": "https://developers.soundcloud.com/docs/api/reference#playlists",
 			"help_text": "Go to the SoundCloud API reference for more information."
 		}, {
 			"name": "Media by User",
 			"url": "https://api.instagram.com/v1/users/1632506140/media/recent",
-			"template": "photos.tpl",
+			"templates": ["photos.tpl"],
 			"reference_url": "https://developers.soundcloud.com/docs/api/reference#me",
 			"help_text": "Go to the SoundCloud API reference for more information."
 		}

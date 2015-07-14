@@ -7,7 +7,7 @@
 </ul>
 <div class="tab-content">
 {{#tabs}}
-  	<form role="tabpanel" class="form-horizontal tab-pane fade in" id="{{ slugify name }}" template="{{ template }}">
+  	<form role="tabpanel" class="form-horizontal tab-pane fade in" id="{{ slugify name }}">
   			<i class="fullscreen fa fa-expand pull-right"></i>
   			<div class="form-group">
 	    	<label for="tag-search" class="col-sm-2 control-label">{{ name }} URL</label>

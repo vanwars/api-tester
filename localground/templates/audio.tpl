@@ -9,5 +9,9 @@
 		Your browser does not support the audio element.
 	</audio>
 	{{ name }}
+	{{#if geometry}}
+		<span class="badge">{{show_lat_lng geometry}}</span>
+	{{/if}}
+	{{tagify tags}}
 </div>
 {{/results}}
